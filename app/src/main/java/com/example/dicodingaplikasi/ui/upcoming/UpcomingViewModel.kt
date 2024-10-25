@@ -19,6 +19,15 @@ class UpcomingViewModel: ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _upcoming = MutableLiveData<List<ListEventsItem>>()
+    val upcoming: LiveData<List<ListEventsItem>> = _upcoming
+
+    private val _error = MutableLiveData<Boolean>()
+    val isError: LiveData<Boolean> = _error
+
+    private val _message = MutableLiveData<String>()
+    val message: LiveData<String> = _message
+
 
 
     companion object{

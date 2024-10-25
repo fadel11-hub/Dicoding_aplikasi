@@ -6,17 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dicodingaplikasi.R
-import com.example.dicodingaplikasi.databinding.ActivityMainBinding
 import com.example.dicodingaplikasi.databinding.FragmentUpcomingBinding
-import com.example.dicodingaplikasi.databinding.ItemEventListBinding
 
 
 class UpcomingFragment : Fragment() {
 
-    private var _binding = FragmentUpcomingBinding? = null
+    private var _binding : FragmentUpcomingBinding? = null
     private val binding get() = _binding!!
 
     private val upcomingViewModel by viewModels<UpcomingViewModel>()
@@ -31,17 +28,20 @@ class UpcomingFragment : Fragment() {
 
         _binding = FragmentUpcomingBinding.inflate(inflater, container, false)
 
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_upcoming, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         adapter = UpcomingAdapter()
-        binding.rv_event.adapter = adapter
-        binding.rv_event.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvEvent.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvEvent.adapter = adapter
 
         upcomingViewModel.isLoading.observe(viewLifecycleOwner) { events ->
             showLoading(events)
         }
-
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_upcoming, container, false)
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -49,5 +49,8 @@ class UpcomingFragment : Fragment() {
 
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
