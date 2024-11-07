@@ -29,7 +29,7 @@ class FinishedViewModel: ViewModel() {
 
     companion object{
         private const val TAG = "FinishedViewModel"
-        private const val EVENT_ID = 1
+        private const val EVENT_ID = 0
     }
 
     init {

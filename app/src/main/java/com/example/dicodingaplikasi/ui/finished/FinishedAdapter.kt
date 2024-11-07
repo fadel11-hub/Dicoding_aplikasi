@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.dicodingaplikasi.data.response.ListEventsItem
 import com.example.dicodingaplikasi.databinding.ItemEventListBinding
 
-class FinishedAdapter : ListAdapter<ListEventsItem, FinishedAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class FinishedAdapter(private val onItemClick: (ListEventsItem) -> Unit): ListAdapter<ListEventsItem, FinishedAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         // DiffUtil untuk membandingkan item dan konten
@@ -26,13 +26,18 @@ class FinishedAdapter : ListAdapter<ListEventsItem, FinishedAdapter.MyViewHolder
 
     // ViewHolder untuk menahan referensi tampilan item
     class MyViewHolder(private val binding: ItemEventListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ListEventsItem) {
+        fun bind(item: ListEventsItem, onItemClick: (ListEventsItem) -> Unit) {
             // Binding data ke UI
             binding.tvName.text = item.name
             binding.tvOwner.text = item.ownerName
             binding.tvLocation.text = item.cityName
             // Menggunakan Glide untuk memuat gambar
             Glide.with(binding.root.context).load(item.imageLogo).into(binding.ivThumbnail)
+
+            // Tambahkan tindakan klik untuk membuka detail event
+            binding.root.setOnClickListener {
+                onItemClick(item)
+            }
         }
     }
 
@@ -45,6 +50,6 @@ class FinishedAdapter : ListAdapter<ListEventsItem, FinishedAdapter.MyViewHolder
     // Mengikat data ke ViewHolder
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val event = getItem(position)
-        holder.bind(event)
+        holder.bind(event, onItemClick)
     }
 }

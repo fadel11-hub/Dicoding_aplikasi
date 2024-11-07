@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.dicodingaplikasi.data.response.ListEventsItem
 import com.example.dicodingaplikasi.databinding.ItemEventListBinding
 
-class UpcomingAdapter : ListAdapter<ListEventsItem, UpcomingAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class UpcomingAdapter(private val onItemClick: (ListEventsItem) -> Unit) : ListAdapter<ListEventsItem, UpcomingAdapter.MyViewHolder>(DIFF_CALLBACK) {
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListEventsItem>() {
             override fun areItemsTheSame(oldItem: ListEventsItem, newItem: ListEventsItem): Boolean {
@@ -26,12 +26,17 @@ class UpcomingAdapter : ListAdapter<ListEventsItem, UpcomingAdapter.MyViewHolder
 
     // ViewHolder class to hold item views
     class MyViewHolder(private val binding: ItemEventListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ListEventsItem) {
+        fun bind(item: ListEventsItem, onItemClick: (ListEventsItem) -> Unit) {
             // Binding data ke tampilan
             binding.tvName.text = item.name
             binding.tvOwner.text = item.ownerName
             binding.tvLocation.text = item.cityName
             Glide.with(binding.root.context).load(item.imageLogo).into(binding.ivThumbnail)
+
+            // Tambahkan tindakan klik untuk membuka detail event
+            binding.root.setOnClickListener {
+                onItemClick(item)
+            }
         }
     }
 
@@ -44,6 +49,6 @@ class UpcomingAdapter : ListAdapter<ListEventsItem, UpcomingAdapter.MyViewHolder
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // Bind data ke tampilan item
         val event = getItem(position)
-        holder.bind(event)
+        holder.bind(event, onItemClick)
     }
 }

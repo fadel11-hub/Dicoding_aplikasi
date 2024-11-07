@@ -5,16 +5,17 @@ import com.example.dicodingaplikasi.data.response.EventResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
-    @GET("detail/{id}")
+    @GET("events")
     fun getUpComing(
-        @Path("id") id: Int
+        @Query("active") active: Int
     ): Call<EventResponse>
 
-    @GET("detail/{id}")
-    fun getFinished(
-        @Path("id") id: Int
+    @GET("events/{id}")
+    fun getDetailEvent(
+        @Path("id") id: String
     ): Call<DetailResponse>
 
 }
