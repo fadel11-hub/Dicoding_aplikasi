@@ -5,6 +5,8 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_finished">Finished</string>
     <string name="title_upcoming">Up Coming</string>
+    <string name="title_favorite">Favorite</string>
+
     <!--    Bingkai-->
 
     <string name="title">Judul</string>

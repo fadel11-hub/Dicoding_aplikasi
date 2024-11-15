@@ -1,7 +1,7 @@
-package com.example.dicodingaplikasi.data.retrofit
+package com.example.dicodingaplikasi.data.remote.retrofit
 
-import com.example.dicodingaplikasi.data.response.DetailResponse
-import com.example.dicodingaplikasi.data.response.EventResponse
+import com.example.dicodingaplikasi.data.remote.response.DetailResponse
+import com.example.dicodingaplikasi.data.remote.response.EventResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

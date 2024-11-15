@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dicodingaplikasi.data.response.ListEventsItem
+import com.example.dicodingaplikasi.data.remote.response.ListEventsItem
 import com.example.dicodingaplikasi.databinding.FragmentFinishedBinding
 import com.example.dicodingaplikasi.ui.DetailEvent.DetailEventActivity
 

@@ -27,7 +27,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_upcoming, R.id.navigation_finished
+            R.id.navigation_upcoming, R.id.navigation_finished, R.id.navigation_favorite
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

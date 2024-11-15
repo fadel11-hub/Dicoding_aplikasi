@@ -6,22 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.dicodingaplikasi.data.response.ListEventsItem
+import com.example.dicodingaplikasi.data.remote.response.ListEventsItem
 import com.example.dicodingaplikasi.databinding.ItemEventListBinding
 
-/**
- * Adapter untuk menampilkan daftar event yang akan datang.
- * Menggunakan `ListAdapter` untuk mengelola daftar item dan membandingkan perubahan data menggunakan `DiffUtil`.
- *
- * @property onItemClick Fungsi yang dipanggil ketika item dalam daftar diklik.
- */
+//Kelas UpcomingAdapter dan MyViewHolder mengenkapsulasi data dan perilaku yang terkait dengan daftar event dan tampilan item. Data (seperti ListEventsItem) dan metode (seperti bind) disatukan dalam satu unit.
 class UpcomingAdapter(private val onItemClick: (ListEventsItem) -> Unit) : ListAdapter<ListEventsItem, UpcomingAdapter.MyViewHolder>(DIFF_CALLBACK) {
-
+//UpcomingAdapter mewarisi dari ListAdapter, yang merupakan bagian dari library Android. Ini menunjukkan penggunaan pewarisan, di mana UpcomingAdapter dapat menggunakan metode dan properti dari ListAdapter diatas
     companion object {
-        /**
-         * Callback untuk menentukan perbedaan antara dua objek `ListEventsItem` dalam daftar.
-         * Digunakan oleh `ListAdapter` untuk optimalisasi performa.
-         */
+
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListEventsItem>() {
             override fun areItemsTheSame(oldItem: ListEventsItem, newItem: ListEventsItem): Boolean {
                 // Memeriksa apakah dua item adalah objek yang sama berdasarkan ID atau atribut unik lainnya.
@@ -63,6 +55,7 @@ class UpcomingAdapter(private val onItemClick: (ListEventsItem) -> Unit) : ListA
         }
     }
 
+//    Metode onBindViewHolder dan onCreateViewHolder adalah contoh polymorphism, di mana metode yang sama didefinisikan dalam kelas induk (ListAdapter) dan diimplementasikan di kelas turunan (UpcomingAdapter). Ini memungkinkan UpcomingAdapter untuk memberikan perilaku spesifiknya sendiri.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         // Menginflate layout item `ItemEventListBinding` dan menginisialisasi ViewHolder
         val binding = ItemEventListBinding.inflate(LayoutInflater.from(parent.context), parent, false)

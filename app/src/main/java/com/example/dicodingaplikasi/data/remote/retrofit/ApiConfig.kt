@@ -1,4 +1,4 @@
-package com.example.dicodingaplikasi.data.retrofit
+package com.example.dicodingaplikasi.data.remote.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

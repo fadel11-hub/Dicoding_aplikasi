@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dicodingaplikasi.R
-import com.example.dicodingaplikasi.data.response.ListEventsItem
+import com.example.dicodingaplikasi.data.remote.response.ListEventsItem
 import com.example.dicodingaplikasi.databinding.ItemEventListBinding
 
-class EventAdapter: ListAdapter<ListEventsItem, EventAdapter.MyViewHolder>(DIFF_CALLBACK){
+class EventAdapter(private val onItemClick: (ListEventsItem) -> Unit): ListAdapter<ListEventsItem, EventAdapter.MyViewHolder>(DIFF_CALLBACK){
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListEventsItem>() {
             override fun areItemsTheSame(
@@ -39,6 +39,8 @@ class EventAdapter: ListAdapter<ListEventsItem, EventAdapter.MyViewHolder>(DIFF_
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val event = getItem(position)
         holder.bind(event)
+
+        val ivFavorite = holder.binding.iv_favorite
     }
 
     class MyViewHolder(val binding: ItemEventListBinding) : RecyclerView.ViewHolder(binding.root) {
