@@ -7,7 +7,7 @@ import com.example.dicodingaplikasi.data.local.entity.EventEntity
 
 @Dao
 interface EventDao {
-    @Query("SELECT * FROM events WHERE favorite = 1")
+    @Query("SELECT * FROM events ")
     fun getFavorite(): LiveData<List<EventEntity>>
 
     @Query("SELECT * FROM events")
@@ -22,6 +22,6 @@ interface EventDao {
     @Query("DELETE FROM events")
     fun deleteAll()
 
-    @Query("SELECT EXISTS(SELECT * FROM events WHERE id = :id AND favorite = 1)")
-    fun isFavorite(id: Int): Boolean
+//    @Query("SELECT EXISTS(SELECT * FROM events WHERE id = :id AND favorite = 1)")
+//    fun isFavorite(id: Int): Boolean
 }

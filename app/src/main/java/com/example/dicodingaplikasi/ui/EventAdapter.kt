@@ -40,7 +40,7 @@ class EventAdapter(private val onItemClick: (ListEventsItem) -> Unit): ListAdapt
         val event = getItem(position)
         holder.bind(event)
 
-        val ivFavorite = holder.binding.iv_favorite
+//        val ivFavorite = holder.binding.iv_favorite
     }
 
     class MyViewHolder(val binding: ItemEventListBinding) : RecyclerView.ViewHolder(binding.root) {
