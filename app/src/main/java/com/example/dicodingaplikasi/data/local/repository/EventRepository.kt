@@ -7,7 +7,6 @@ import com.example.dicodingaplikasi.data.local.room.EventDao
 import com.example.dicodingaplikasi.data.remote.response.EventResponse
 import com.example.dicodingaplikasi.data.remote.response.ListEventsItem
 import com.example.dicodingaplikasi.data.remote.retrofit.ApiService
-import com.example.dicodingaplikasi.BuildConfig
 import com.example.dicodingaplikasi.utils.AppExecutors
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,8 +21,7 @@ class EventRepository private constructor(
 
     fun getHeadEvent(): LiveData<Result<List<EventEntity>>> {
         result.value = Result.Loading
-
-        val client = apiService.getUpComing(BuildConfig.API_KEY)
+        val client = apiService.getUpComing("1")
         client.enqueue(object : Callback<EventResponse> {
             override fun onResponse(call: Call<EventResponse>, response: Response<EventResponse>) {
                 if (response.isSuccessful) {
@@ -63,11 +61,11 @@ class EventRepository private constructor(
         )
     }
 
-    fun getFavorite(): LiveData<List<EventEntity>> {
+    fun getFavoriteEvent(): LiveData<List<EventEntity>> {
         return eventsDao.getFavorite()
     }
 
-    fun setFavorite(event: EventEntity, favoriteState: Boolean) {
+    fun setFavoriteEvent(event: EventEntity, favoriteState: Boolean) {
         appExecutors.diskIO.execute {
             // Implementasi favorite jika diperlukan
             event.isFavorite = favoriteState
@@ -80,9 +78,9 @@ class EventRepository private constructor(
         @Volatile
         private var instance: EventRepository? = null
         fun getInstance(
+            apiService: ApiService,
             eventsDao: EventDao,
-            appExecutors: AppExecutors,
-            apiService: ApiService
+            appExecutors: AppExecutors
         ): EventRepository =
             instance ?: synchronized(this) {
                 instance ?: EventRepository(eventsDao, appExecutors, apiService)

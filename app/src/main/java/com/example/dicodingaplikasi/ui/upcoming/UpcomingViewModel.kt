@@ -41,7 +41,7 @@ class UpcomingViewModel : ViewModel() {
 
     companion object {
         private const val TAG = "UpcomingViewModel"
-        private const val EVENT_ID = 1 // ID khusus untuk mendeteksi event upcoming
+        private const val EVENT_ID = "1" // ID khusus untuk mendeteksi event upcoming
     }
 
     init {

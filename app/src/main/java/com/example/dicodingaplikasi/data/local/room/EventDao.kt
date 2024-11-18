@@ -14,10 +14,16 @@ interface EventDao {
     fun getAllEvents(): LiveData<List<EventEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend
     fun insertEvent(events: List<EventEntity>)
 
     @Update
+//    suspend
     fun updateFavorite(event: EventEntity)
+
+    @Delete
+//    suspend
+    fun delete(event: EventEntity)
 
     @Query("DELETE FROM events")
     fun deleteAll()

@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp") version "1.9.0-1.0.11" apply true //dengan asumsi versi Kotlin 1.9.0
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -65,5 +65,8 @@ dependencies {
 
     //room
     implementation(libs.androidx.room.runtime)
+    implementation("androidx.room:room-ktx:2.5.2")
     ksp(libs.room.compiler)
+
+    
 }

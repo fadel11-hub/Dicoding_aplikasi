@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("events")
     fun getUpComing(
-        @Query("active") active: Int
+        @Query("active") active: String
     ): Call<EventResponse>
 
     @GET("events/{id}")
