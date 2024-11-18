@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DicodingAplikasi"
         tools:targetApi="31">
         <activity
+            android:name=".ui.setting.DarkMode"
+            android:exported="false" />
+        <activity
             android:name=".ui.DetailEvent.DetailEventActivity"
             android:exported="false" />
         <activity

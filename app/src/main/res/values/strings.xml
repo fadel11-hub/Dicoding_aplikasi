@@ -6,6 +6,9 @@
     <string name="title_finished">Finished</string>
     <string name="title_upcoming">Up Coming</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_setting">Setting</string>
+    <string name="dark_mode">Dark Mode</string>
+
 
     <!--    Bingkai-->
 

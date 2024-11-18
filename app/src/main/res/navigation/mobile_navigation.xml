@@ -17,6 +17,19 @@
         android:label="@string/title_finished"
         tools:layout="@layout/fragment_finished" />
 
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.example.dicodingaplikasi.ui.favorite.FavoriteFragment"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.dicodingaplikasi.ui.setting.DarkMode"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_dark_mode"/>
+
+
 
 
 

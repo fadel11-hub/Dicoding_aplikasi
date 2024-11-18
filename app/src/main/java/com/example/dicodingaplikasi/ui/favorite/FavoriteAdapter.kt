@@ -25,22 +25,22 @@ class FavoriteAdapter(private val onFavoriteClick: (EventEntity) -> Unit) :
         holder.bind(event) { selectedItem ->
             onFavoriteClick(
                 EventEntity(
-                    id = selectedItem.id,
+//                    id = selectedItem.id,
                     name = selectedItem.name,
                     mediaCover = selectedItem.imageLogo
                 )
             )
         }
 
-        val ivFavorite = holder.binding.ivFavorite
-        if (event.isFavorite) {
-            ivFavorite.setImageDrawable(ContextCompat.getDrawable(ivFavorite.context, R.drawable.ic_favorite))
-        } else {
-            ivFavorite.setImageDrawable(ContextCompat.getDrawable(ivFavorite.context, R.drawable.ic_favorite_border))
-        }
-        ivFavorite.setOnClickListener {
-            onFavoriteClick(event)
-        }
+//        val ivFavorite = holder.binding.ivFavorite
+//        if (event.isFavorite) {
+//            ivFavorite.setImageDrawable(ContextCompat.getDrawable(ivFavorite.context, R.drawable.ic_favorite))
+//        } else {
+//            ivFavorite.setImageDrawable(ContextCompat.getDrawable(ivFavorite.context, R.drawable.ic_favorite_border))
+//        }
+//        ivFavorite.setOnClickListener {
+//            onFavoriteClick(event)
+//        }
     }
 
     class MyViewHolder(val binding: ItemEventListBinding) : RecyclerView.ViewHolder(binding.root) {
